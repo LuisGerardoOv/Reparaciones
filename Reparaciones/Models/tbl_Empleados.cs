@@ -20,6 +20,8 @@ namespace Reparaciones.Models
         public bool Rol { get; set; }
         //0.- Desempleado
         //1.-Empleado
+        public string correo { get; set; }
+        public string contrasena { get; set; }
         public bool esActivo { get; set; }
     }
 }

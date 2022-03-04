@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Reparaciones.Controllers.Usuarios;
+using Reparaciones.Models;
 
 namespace Reparaciones.Controllers
 {
@@ -13,18 +15,16 @@ namespace Reparaciones.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult inicio()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        public JsonResult Login(string correo, string contrasena)
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            UsuarioControlador usuarios = new UsuarioControlador();
+            tbl_Empleados obj = usuarios.login(correo, contrasena);          
+            return Json(obj, JsonRequestBehavior.AllowGet);
         }
     }
 }
