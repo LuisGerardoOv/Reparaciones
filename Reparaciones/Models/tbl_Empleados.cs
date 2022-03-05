@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,7 @@ namespace Reparaciones.Models
 {
     public class tbl_Empleados
     {
+        [Key]
         public int id { get; set; }
         public string nombre { get; set; }
         public string apellidoP { get; set; }
@@ -23,5 +25,7 @@ namespace Reparaciones.Models
         public string correo { get; set; }
         public string contrasena { get; set; }
         public bool esActivo { get; set; }
+        public tbl_Ventas venta { get; set; }
+
     }
 }

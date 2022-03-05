@@ -17,11 +17,11 @@ namespace Reparaciones.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<tbl_Ventas>().HasKey(x => x.idCelular);
-            modelBuilder.Entity<tbl_Ventas>().HasKey(x => x.idCliente);
-            modelBuilder.Entity<tbl_Ventas>().HasKey(x => x.idEmpleado);
-            modelBuilder.Entity<tbl_Celulares>().HasKey(x => x.idMarca);
-            modelBuilder.Entity<tbl_Clientes>().HasKey(x => x.idCelular);
+            modelBuilder.Entity<tbl_Ventas>().HasRequired(x => x.celulares).WithOptional(t => t.ventas);
+            modelBuilder.Entity<tbl_Ventas>().HasRequired(x => x.clientes).WithOptional(t => t.venta);
+            modelBuilder.Entity<tbl_Ventas>().HasRequired(x => x.empleados).WithOptional(t => t.venta);
+            modelBuilder.Entity<tbl_Celulares>().HasRequired(x => x.marcas).WithOptional(t => t.celulares);
+            modelBuilder.Entity<tbl_Clientes>().HasRequired(x => x.celulares).WithOptional(t => t.clientes);
         }
 
         //TABLAS
