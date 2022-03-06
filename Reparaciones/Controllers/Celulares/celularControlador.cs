@@ -20,8 +20,8 @@ namespace Reparaciones.Controllers.Celulares
                 List<tbl_Marcas> lstMarcas = context.tbl_Marcas.ToList();
                 var lst = lstCelulares.Select(x => new celularesDTO
                 {
-                    id = x.id,
-                    idMarca = x.idMarca,  
+                    id = x.id,   
+                    idMarca = x.idMarca,
                     marca = "",
                     modelo = x.modelo,
                     caracteristicas = x.caracteristicas,
@@ -37,6 +37,25 @@ namespace Reparaciones.Controllers.Celulares
             catch (Exception err)
             {
                 return null;
+            }
+        }
+
+        public tbl_Celulares GuardarCelulares(tbl_Celulares nuevoCelular)
+        {
+            try
+            {
+                tbl_Celulares celulares = new tbl_Celulares();      
+                celulares.idMarca = nuevoCelular.idMarca;
+                celulares.modelo = nuevoCelular.modelo;
+                celulares.caracteristicas = nuevoCelular.caracteristicas;
+                celulares.esReparado = false;
+                context.tbl_Celulares.Add(celulares);
+                context.SaveChanges();
+                return celulares;
+            }
+            catch (Exception err)
+            {
+                return null;                
             }
         }
     }

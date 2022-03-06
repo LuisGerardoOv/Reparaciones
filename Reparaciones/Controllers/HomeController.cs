@@ -33,14 +33,20 @@ namespace Reparaciones.Controllers
             UsuarioControlador usuarios = new UsuarioControlador();
             tbl_Empleados obj = usuarios.login(correo, contrasena);          
             return Json(obj, JsonRequestBehavior.AllowGet);
-        }
-
- 
+        } 
       
         public JsonResult GetCelulares()
         {            
             celularControlador celular = new celularControlador();
             List<celularesDTO> obj = celular.GetCelulares();
+            return Json(obj, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public JsonResult GuardarCelulares(tbl_Celulares nuevoCelular)
+        {
+            celularControlador celular = new celularControlador();
+            tbl_Celulares obj = celular.GuardarCelulares(nuevoCelular);
             return Json(obj, JsonRequestBehavior.AllowGet);
 
         }
